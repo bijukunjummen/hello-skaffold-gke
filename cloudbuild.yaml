@@ -10,4 +10,4 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     id: trigger-deploy
-    args: [ "beta", "deploy", "releases",  "create",  "$SHORT_SHA", "--delivery-pipeline",  "hello-skaffold-gke", "--region", "us-west1", "--build-artifacts", "artifacts.json" ]
+    args: [ "beta", "deploy", "releases",  "create",  "release-$SHORT_SHA", "--delivery-pipeline",  "hello-skaffold-gke", "--region", "us-west1", "--build-artifacts", "artifacts.json" ]

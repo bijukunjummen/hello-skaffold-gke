@@ -1,20 +1,4 @@
 steps:
-  - waitFor: [ '-' ]
-    name: gcr.io/cloud-builders/gsutil
-    dir: /cachinghome
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        gsutil ls -b gs://${_GCS_CACHE_BUCKET} || gsutil mb -l gs://${_GCS_CACHE_BUCKET}
-
-        (
-          gsutil cp gs://${_GCS_CACHE_BUCKET}/${_GCS_CACHE_FILE}.tar.gz /tmp/gradle-cache.tar.gz &&
-          tar -xzf /tmp/gradle-cache.tar.gz
-        ) || echo 'Cache not found'
-    volumes:
-      - name: caching.home
-        path: /cachinghome
   - name: openjdk:11
     id: test
     entrypoint: "/bin/bash"
@@ -22,24 +6,4 @@ steps:
       - '-c'
       - |-
         set -x
-        export CACHING_HOME="/cachinghome"
-        USER_HOME="/root"
-        M2_HOME="$${USER_HOME}/.m2"
-        M2_CACHE="$${CACHING_HOME}/maven"
-        GRADLE_HOME="$${USER_HOME}/.gradle"
-        GRADLE_CACHE="$${CACHING_HOME}/gradle"
-
-        echo "Generating symbolic links for caches"
-        mkdir -p $${M2_CACHE}
-        mkdir -p $${GRADLE_CACHE}
-
-        [[ -d "$${M2_CACHE}" && ! -d "$${M2_HOME}" ]] && ln -s "$${M2_CACHE}" "$${M2_HOME}"
-        [[ -d "$${GRADLE_CACHE}" && ! -d "$${GRADLE_HOME}" ]] && ln -s "$${GRADLE_CACHE}" "$${GRADLE_HOME}"
         skaffold build --default-repo=gcr.io/$PROJECT_ID
-    volumes:
-      - name: caching.home
-        path: /cachinghome
-
-substitutions:
-  _GCS_CACHE_BUCKET: <some bucket for caching gradle file>
-  _GCS_CACHE_FILE: <file to hold cached content>

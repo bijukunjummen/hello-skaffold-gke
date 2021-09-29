@@ -18,5 +18,7 @@ profiles:
   - name: gcp
     patches:
     - op: replace
-      path: /build/artifacts/0/image
-      value: gcr.io/biju-altostrat-demo/hello-skaffold-gke
+      path: /deploy/kubectl/manifests
+      value:
+        - kubernetes/hello-deployment-gcp.yaml
+        - kubernetes/hello-service-gcp.yaml

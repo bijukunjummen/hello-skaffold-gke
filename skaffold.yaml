@@ -14,3 +14,9 @@ deploy:
     manifests:
     - kubernetes/hello-deployment.yaml
     - kubernetes/hello-service.yaml
+profiles:
+  - name: gcp
+    patches:
+    - op: replace
+      path: /build/artifacts/0/image
+      value: gcr.io/biju-altostrat-demo/hello-skaffold-gke

@@ -6,7 +6,7 @@ description: Delivery Pipeline for a sample app
 serialPipeline:
   stages:
     - targetId: dev
-      profiles: []
+      profiles: [gcp]
 ---
 
 apiVersion: deploy.cloud.google.com/v1beta1
@@ -15,4 +15,4 @@ metadata:
   name: dev
 description: sample dev cluster
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/sample-standard-cluster-1
+  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/standard-cluster-1

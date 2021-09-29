@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |-
         set -x
-        skaffold build --interactive=false --default-repo=$(gcloud config get-value compute/region)-docker.pkg.dev/$PROJECT_ID --file-output artifacts.json
+        skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID --file-output artifacts.json
 
   - name: 'gcr.io/cloud-builders/gcloud'
     id: trigger-deploy

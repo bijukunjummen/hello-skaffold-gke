@@ -1,5 +1,5 @@
 steps:
-  - name: openjdk:11
+  - name: "gcr.io/k8s-skaffold/skaffold"
     id: test
     entrypoint: "/bin/bash"
     args:

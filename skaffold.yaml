@@ -14,11 +14,3 @@ deploy:
     manifests:
     - kubernetes/hello-deployment.yaml
     - kubernetes/hello-service.yaml
-profiles:
-  - name: gcp
-    patches:
-    - op: replace
-      path: /deploy/kubectl/manifests
-      value:
-        - kubernetes/hello-deployment-gcp.yaml
-        - kubernetes/hello-service-gcp.yaml

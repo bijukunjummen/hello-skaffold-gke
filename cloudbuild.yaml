@@ -1,6 +1,13 @@
 steps:
-  - name: "gcr.io/k8s-skaffold/skaffold"
+  - name: openjdk:11
     id: test
+    entrypoint: "/bin/bash"
+    args:
+      - '-c'
+      - |-
+        ./gradlew check
+  - name: "gcr.io/k8s-skaffold/skaffold"
+    id: build-image
     entrypoint: "/bin/bash"
     args:
       - '-c'

@@ -13,7 +13,12 @@ This is a complete pipeline demonstrating:
 - clouddeploy.yaml holds the CD pipeline steps
 
 ## Deployment
-- Create a [Cloud Build Trigger](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+- Create a Cloud Build Trigger:
+  - Using [Cloud Console](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+  - OR using command line:
+      ```shell
+      gcloud beta builds triggers create github --repo-name hello-skaffold-gke --repo-owner bijukunjummen --branch-pattern '^main$' --name hello-skaffold-gke-exp --build-config cloudbuild.yaml
+      ```
 - Create a Deployment Pipeline -
     ```sh
     gcloud beta deploy apply --file=clouddeploy.yaml --region=us-west1

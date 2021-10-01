@@ -13,7 +13,7 @@ apiVersion: deploy.cloud.google.com/v1beta1
 kind: Target
 metadata:
   name: dev
-description: sample dev cluster
+description: A Dev cluster
 gke:
   cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/standard-cluster-1
 
@@ -22,7 +22,7 @@ apiVersion: deploy.cloud.google.com/v1beta1
 kind: Target
 metadata:
   name: prod
-description: sample prod cluster
+description: A Prod cluster
 requireApproval: true
 gke:
   cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/standard-cluster-prod

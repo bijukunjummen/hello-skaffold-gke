@@ -2,7 +2,6 @@
 
 ![](artifacts/CloudDeploy.jpg)
 
-
 This is a complete pipeline demonstrating:
 1. Continuous integration process once a code is merged into the "main" branch of a project
 2. Building an image once the tests are done

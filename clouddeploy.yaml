@@ -1,28 +1,28 @@
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: hello-skaffold-gke
-description: Delivery Pipeline for a sample app
+description: Delivery Pipeline for a sample java app
 serialPipeline:
   stages:
     - targetId: dev
     - targetId: prod
 
 ---
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
   name: dev
 description: A Dev cluster
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/standard-cluster-1
+  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/cluster-1
 
 ---
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
   name: prod
 description: A Prod cluster
 requireApproval: true
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/standard-cluster-prod
+  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/cluster-2

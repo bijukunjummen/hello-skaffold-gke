@@ -21,5 +21,5 @@ This is a complete pipeline demonstrating:
       ```
 - Create a Deployment Pipeline -
     ```sh
-    gcloud beta deploy apply --file=clouddeploy.yaml --region=us-west1
+    gcloud deploy apply --file=clouddeploy.yaml --region=us-west1
     ```

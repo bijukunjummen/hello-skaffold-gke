@@ -15,7 +15,7 @@ metadata:
   name: dev
 description: A Dev cluster
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/cluster-1
+  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/cluster-1
 
 ---
 apiVersion: deploy.cloud.google.com/v1
@@ -25,4 +25,4 @@ metadata:
 description: A Prod cluster
 requireApproval: true
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1-a/clusters/cluster-2
+  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/cluster-2

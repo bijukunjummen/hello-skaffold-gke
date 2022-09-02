@@ -5,10 +5,7 @@ metadata:
 build:
   artifacts:
   - image: hello-skaffold-gke
-    buildpacks:
-      builder: gcr.io/buildpacks/builder:v1
-      env:
-        - "GOOGLE_RUNTIME_VERSION=17"
+    jib: {}
 deploy:
   kubectl:
     manifests:

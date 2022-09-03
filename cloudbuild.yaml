@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |-
         ./gradlew check
-  - name: "gcr.io/k8s-skaffold/skaffold"
+  - name: "us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/skaffold:latest"
     id: build-image
     entrypoint: "/bin/bash"
     args:

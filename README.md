@@ -12,6 +12,7 @@ This is a complete pipeline demonstrating:
 - cloudbuild.yaml holds the CI pipeline steps
 - clouddeploy.yaml holds the CD pipeline steps
 
+
 ## Deployment
 - Create two clusters
   ```shell

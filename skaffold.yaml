@@ -1,17 +1,19 @@
-apiVersion: skaffold/v2beta16
+apiVersion: skaffold/v3alpha1
 kind: Config
 metadata:
   name: hello-skaffold-gke
+manifests:
+  rawYaml:
+  - kubernetes/hello-deployment.yaml
+  - kubernetes/hello-service.yaml
+
 build:
   artifacts:
   - image: hello-skaffold-gke
-    jib: {}
+    jib: { }
 #    buildpacks:
 #      builder: gcr.io/buildpacks/builder:v1
 #      env:
 #        - "GOOGLE_RUNTIME_VERSION=17"
 deploy:
-  kubectl:
-    manifests:
-    - kubernetes/hello-deployment.yaml
-    - kubernetes/hello-service.yaml
+  kubectl: { }

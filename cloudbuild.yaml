@@ -13,7 +13,7 @@ steps:
       - '-c'
       - |-
         set -x
-#        skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
+        # skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
         ./gradlew jibDockerBuild --image us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
 
   - name: 'gcr.io/cloud-builders/gcloud'

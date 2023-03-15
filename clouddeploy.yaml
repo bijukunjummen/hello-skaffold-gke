@@ -14,7 +14,7 @@ serialPipeline:
                 service: "hello-skaffold-gke-service"
                 deployment: "hello-skaffold-gke-deployment"
           canaryDeployment:
-            percentages: [50]
+            percentages: [15]
             verify: false
     - targetId: prod
 

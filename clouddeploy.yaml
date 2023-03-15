@@ -6,6 +6,16 @@ description: Delivery Pipeline for a sample java app
 serialPipeline:
   stages:
     - targetId: dev
+      strategy:
+        canary:
+          runtimeConfig:
+            kubernetes:
+              serviceNetworking:
+                service: "hello-skaffold-gke-service"
+                deployment: "hello-skaffold-gke-deployment"
+          canaryDeployment:
+            percentages: [50]
+            verify: false
     - targetId: prod
 
 ---
@@ -15,7 +25,7 @@ metadata:
   name: dev
 description: A Dev cluster
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/cluster1
+  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/demo-cluser
 
 ---
 apiVersion: deploy.cloud.google.com/v1
@@ -25,4 +35,4 @@ metadata:
 description: A Prod cluster
 requireApproval: true
 gke:
-  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/cluster2
+  cluster: projects/biju-altostrat-demo/locations/us-west1/clusters/demo-cluster

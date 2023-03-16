@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |-
         ./gradlew check
-  - name: eclipse-temurin:17.0.6_10-jdk
+  - name: "us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/skaffold:latest"
     id: build-image
     entrypoint: "/bin/bash"
     args:

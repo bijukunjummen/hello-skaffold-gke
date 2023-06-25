@@ -8,9 +8,11 @@ This is a complete pipeline demonstrating:
 3. Deploying the image into a dev/test environment
 4. Manual promotion of a deployment to prod environment
 
+
 ## Resources
 - cloudbuild.yaml holds the CI pipeline steps
 - clouddeploy.yaml holds the CD pipeline steps
+
 
 
 ## Deployment

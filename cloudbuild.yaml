@@ -13,18 +13,22 @@ steps:
       - '-c'
       - |-
         set -x
-        # skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
-        ./gradlew jibDockerBuild --image us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
+        skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
+        # ./gradlew jibDockerBuild --image us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
+
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   id: trigger-deploy
+  #   entrypoint: /bin/bash
+  #   args:
+  #     - '-c'
+  #     - |-
+  #       set -x
+  #       image_digest=$(gcloud artifacts docker images describe us-west1-docker.pkg.dev/biju-altostrat-demo/sample-repo/hello-skaffold-gke:$SHORT_SHA --format 'value(image_summary.fully_qualified_digest)')
+  #       gcloud beta deploy releases create release-$SHORT_SHA --delivery-pipeline hello-skaffold-gke --region us-west1 --images=$image_digest
 
   - name: 'gcr.io/cloud-builders/gcloud'
     id: trigger-deploy
-    entrypoint: /bin/bash
-    args:
-      - '-c'
-      - |-
-        set -x
-        image_digest=$(gcloud artifacts docker images describe us-west1-docker.pkg.dev/biju-altostrat-demo/sample-repo/hello-skaffold-gke:$SHORT_SHA --format 'value(image_summary.fully_qualified_digest)')
-        gcloud beta deploy releases create release-$SHORT_SHA --delivery-pipeline hello-skaffold-gke --region us-west1 --images=$image_digest
+    args: [ "beta", "deploy", "releases",  "create",  "release-$SHORT_SHA", "--delivery-pipeline",  "hello-skaffold-gke", "--region", "us-west1", "--build-artifacts", "artifacts.json" ]
 
 images:
 - us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA

@@ -14,7 +14,7 @@ steps:
       - |-
         set -x
         # skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
-        ./gradlew jibDockerBuild --image us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
+        ./gradlew jib --image us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
         docker image inspect "us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA"
         docker image inspect "us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA" --format '{{index .RepoDigests 0}}' > image-digest.txt
 

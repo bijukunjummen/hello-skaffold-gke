@@ -19,7 +19,7 @@ class GreetingsControllerTest {
 				.accept(MediaType.APPLICATION_JSON)
 				.exchange()
 				.expectBody()
-				.jsonPath("$.payload").isEqualTo("Hello");
+				.jsonPath("$.payload").isEqualTo("Hello from Pdx devops");
 	}
 
 	@Test

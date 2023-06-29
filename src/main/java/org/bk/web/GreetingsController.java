@@ -12,7 +12,7 @@ public class GreetingsController {
 
 	@GetMapping("/greetings")
 	public ResponseEntity<Message> greetings() {
-		return ResponseEntity.ok(new Message("Hello"));
+		return ResponseEntity.ok(new Message("Hello from Pdx devops"));
 	}
 
 	@GetMapping(path = "/greetings", params = "payload")

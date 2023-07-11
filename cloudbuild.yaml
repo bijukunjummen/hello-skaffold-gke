@@ -14,6 +14,7 @@ steps:
       - |-
         set -x
         skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
+        docker pull us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo:$SHORT_SHA
         # ./gradlew jibDockerBuild --image us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
         # docker push us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/hello-skaffold-gke:$SHORT_SHA
         # gcloud artifacts docker images describe us-west1-docker.pkg.dev/biju-altostrat-demo/sample-repo/hello-skaffold-gke:$SHORT_SHA --format 'value(image_summary.fully_qualified_digest)' > image-digest.txt

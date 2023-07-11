@@ -10,10 +10,10 @@ manifests:
 build:
   artifacts:
   - image: hello-skaffold-gke
-    jib: { }
-#    buildpacks:
-#      builder: gcr.io/buildpacks/builder:v1
-#      env:
-#        - "GOOGLE_RUNTIME_VERSION=17"
+    # jib: { }
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+      env:
+        - "GOOGLE_RUNTIME_VERSION=17"
 deploy:
   kubectl: { }

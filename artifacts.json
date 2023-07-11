@@ -1,0 +1,1 @@
+{"builds":[{"imageName":"hello-skaffold-gke","tag":"us-west1-docker.pkg.dev/biju-altostrat-demo/sample-repo/hello-skaffold-gke:testtag@sha256:90e064242d6b75c7fc2f3177649f42d9cfa5ab6fdc7cf09a0b9a7378160aa108"}]}
